@@ -1,0 +1,1353 @@
+/* ==================== VARIABEL WARNA - TEMA ANGKASA ==================== */
+/* 
+    Anda hanya perlu mengubah kode warna (misal: #0a1128) di sini, 
+    dan seluruh website akan otomatis berubah.
+*/
+:root {
+    --primary-color: #ffffff;     /* Warna background paling gelap */
+    --secondary-color: #ffffff;   /* Warna sekunder (misal: garis bawah judul) */
+    --accent-color: #ffffff;      /* Warna aksen (misal: teks judul, ikon) */
+    --light-bg: #ffffff;          /* Warna background sedikit lebih terang */
+    --dark-text: #020202;         /* Warna teks untuk background terang (tidak terpakai di tema gelap ini) */
+    --light-text: #a8b2d1;        /* Warna teks paragraf (putih keabuan) */
+    --space-purple: #00bbff;      /* Warna ungu untuk gradient */
+    --space-pink: #ff0000;        /* Warna pink untuk gradient */
+    --space-blue: #f63b3b;        /* Warna biru untuk gradient */
+    --space-cyan: #5500ff;        /* Warna cyan untuk gradient */
+}
+
+/* ==================== GLOBAL STYLES (Pengaturan Umum) ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ini adalah pengaturan standar, biarkan saja */
+}
+
+body {
+    /* FONT UTAMA: Ganti 'Poppins' jika Anda ingin font lain (harus di-import dari Google Fonts di HTML) */
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-text); /* Warna teks default (tidak terlalu terpakai di tema gelap) */
+    overflow-x: hidden; /* Mencegah scroll horizontal */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Menghilangkan scrollbar di beberapa browser */
+}
+
+html {
+    scroll-behavior: smooth; /* Membuat scroll saat klik menu menjadi halus */
+}
+
+/* Pengaturan default untuk semua <section> */
+section {
+    padding: 80px 0; /* Jarak atas-bawah 80px, kiri-kanan 0 */
+    min-height: 100vh; /* Tinggi minimal 1 layar penuh */
+    display: flex;
+    align-items: center;
+}
+
+/* JUDUL SECTION (Misal: "Tentang Saya", "Resume Saya") */
+.section-title {
+    font-size: 2.5rem; /* Ukuran font judul */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary-color); /* Menggunakan warna gelap (di tema gelap, ini akan di-override) */
+    position: relative;
+    padding-bottom: 20px;
+}
+
+/* Garis bawah di judul section */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--secondary-color); /* Menggunakan warna sekunder */
+    border-radius: 2px;
+}
+
+/* ==================== NAVBAR (Menu Atas) ==================== */
+.navbar {
+    /* Ganti rgba(10, 17, 40, 0.95) untuk mengubah warna navbar. 0.95 adalah tingkat transparansi */
+    background: rgba(0, 0, 0, 0.95) !important;
+    backdrop-filter: blur(10px); /* Efek blur (keren, tapi bisa dihapus jika berat) */
+    box-shadow: 0 2px 20px rgba(255, 255, 255, 0.3); /* Bayangan navbar */
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+/* Nama Brand di Navbar (MyPortfolio) */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white !important; /* Warna teks brand */
+}
+
+/* Link Menu (Home, About, ...) */
+.nav-link {
+    color: rgba(255, 255, 255, 0.8) !important; /* Warna link menu */
+    font-weight: 500;
+    margin: 0 10px;
+    transition: all 0.3s;
+}
+
+/* Efek saat link menu di-hover (disorot mouse) */
+.nav-link:hover {
+    color: var(--accent-color) !important; /* Warna berubah jadi warna aksen */
+    transform: translateY(-2px);
+}
+
+/* ==================== HOME SECTION (Tampilan Awal) ==================== */
+#home {
+    /* Background Gradient: Ini adalah kombinasi 5 warna. Anda bisa ganti warnanya */
+    background: linear-gradient(135deg, #000000 0%, #ff0000 25%, #550101 50%, #0400ff 75%, #000000 100%);
+    position: relative;
+    color: white; /* Warna teks di section home */
+    text-align: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.home-profile {
+    border-radius: 600px;
+    width: 300px;
+    height: 300px;
+}
+
+/* Efek Bintang (Advanced): Ini membuat titik-titik putih seperti bintang */
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 70%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, white, transparent),
+        radial-gradient(2px 2px at 90% 60%, white, transparent),
+        radial-gradient(1px 1px at 33% 80%, white, transparent),
+        radial-gradient(1px 1px at 15% 90%, white, transparent);
+    background-size: 200% 200%;
+    animation: stars 60s linear infinite; /* Animasi bintang bergerak */
+    opacity: 0.6;
+}
+
+/* Animasi Bintang (Advanced) */
+@keyframes stars {
+    0% { background-position: 0 0, 40% 60%, 130% 270%, 70% 100%, 0 0, 40% 60%, 130% 270%; }
+    100% { background-position: 100% 100%, 140% 160%, 230% 370%, 170% 200%, 100% 100%, 140% 160%, 230% 370%; }
+}
+
+.home-content {
+    position: relative;
+    z-index: 1; /* Memastikan konten ada di atas bintang */
+}
+
+
+
+/* Teks Judul Nama (H1) */
+.home-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+}
+
+/* Teks Subjudul (Lead) */
+.home-content .lead {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    opacity: 0.9;
+}
+
+/* Ikon Sosial Media (Lingkaran) */
+.social-links a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    /* Warna lingkaran ikon (transparan ungu) */
+    background: rgba(124, 58, 237, 0.2);
+    color: white; /* Warna ikon */
+    border-radius: 50%; /* Membuat jadi lingkaran */
+    margin: 0 10px;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    border: 2px solid rgba(124, 58, 237, 0.3);
+}
+
+/* Efek saat ikon sosmed di-hover */
+.social-links a:hover {
+    background: linear-gradient(135deg, var(--space-purple), var(--space-pink)); /* Ganti warna hover */
+    color: white;
+    transform: translateY(-5px); /* Efek terangkat */
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.5);
+    border-color: var(--accent-color);
+}
+
+/* ==================== ABOUT SECTION (Tentang Saya) ==================== */
+#about {
+    background: linear-gradient(180deg, #000000 0%, #000000 100%); /* Background gradient gelap */
+    color: #e2e8f0; /* Warna teks paragraf */
+}
+
+/* Judul section "Tentang Saya" (warna putih) */
+#about .section-title {
+    color: white;
+}
+/* Garis bawah judul (warna gradient) */
+#about .section-title::after {
+    background: linear-gradient(90deg, var(--space-purple), var(--space-pink));
+}
+
+/* Foto Profil */
+.profile-img {
+    width: 100%;
+    max-width: 350px; /* Ukuran maksimal foto */
+    border-radius: 20px; /* Membuat sudut melengkung */
+    box-shadow: 0 10px 50px rgb(255, 218, 131); /* Bayangan foto */
+    transition: transform 0.3s;
+    
+}
+/* Efek hover foto profil */
+.profile-img:hover {
+    transform: scale(1.05); /* Sedikit membesar */
+    box-shadow: 0 15px 50px rgba(124, 58, 237, 0.6);
+}
+
+.about-info {
+    padding: 20px;
+}
+/* Teks profesi (Web Developer & Designer) */
+.about-info h3 {
+    color: var(--accent-color); /* Warna aksen */
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.about-info p {
+    color: #cbd5e1; /* Warna teks deskripsi diri */
+}
+.info-item {
+    margin-bottom: 15px;
+    color: #cbd5e1;
+}
+/* Teks (Nama, Alamat, Email) */
+.info-item strong {
+    color: var(--accent-color); /* Warna aksen */
+    margin-right: 10px;
+}
+/* Ikon di data diri */
+.info-item i {
+    color: var(--space-purple); /* Warna ungu */
+}
+
+/* ==================== RESUME SECTION ==================== */
+#resume {
+    background: linear-gradient(180deg, #000000 0%, #000000 100%);
+    color: #e2e8f0;
+}
+#resume .section-title {
+    color: white;
+}
+#resume .section-title::after {
+    background: linear-gradient(90deg, var(--space-cyan), var(--space-blue));
+}
+#resume h3 {
+    color: var(--accent-color);
+}
+
+/* CATATAN: CSS untuk .timeline, .timeline::before, dan .timeline-item 
+   telah dihapus karena kelas-kelas ini tidak digunakan di index.html 
+   dan berpotensi menyebabkan error layout.
+*/
+
+/* Kotak untuk item Pendidikan/Pengalaman */
+.timeline-card {
+    background: rgba(26, 31, 58, 0.6); /* Background kotak (transparan) */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(124, 58, 237, 0.3);
+    transition: all 0.3s;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    backdrop-filter: blur(10px); /* Efek blur di background kotak */
+    margin-bottom: 30px; /* Ditambahkan agar ada jarak antar kartu */
+}
+/* Efek hover kotak resume */
+.timeline-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.5);
+    border-color: var(--accent-color);
+}
+/* Judul (misal: "SD Negeri 1 Kejawen") */
+.timeline-card h4 {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+/* Teks tahun */
+.timeline-card .year {
+    color: var(--space-cyan); /* Warna cyan */
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.timeline-card p {
+    color: #cbd5e1; /* Warna teks deskripsi */
+}
+.timeline-card i {
+    color: var(--space-purple);
+}
+
+/* ==================== SKILLS SECTION ==================== */
+#skills {
+    background: linear-gradient(180deg, #000000 0%, #24478d, black 100%); 
+    color: #e2e8f0;
+}
+#skills .section-title {
+    color: white;
+}
+#skills .section-title::after {
+    background: linear-gradient(90deg, var(--space-purple), var(--space-pink));
+}
+
+/* Kotak untuk item skill */
+.skill-item {
+    background: rgba(26, 31, 58, 0.6);
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    box-shadow: 0 5px 20px rgba(124, 58, 237, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+    border-color: var(--accent-color);
+}
+
+/* Nama skill (HTML & CSS) */
+.skill-name {
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+.skill-name i {
+    color: var(--accent-color); /* Warna ikon skill */
+    margin-right: 12px;
+    font-size: 1.5rem;
+    width: 25px; 
+    text-align: center;
+}
+
+/* Background dari progress bar (yang abu-abu) */
+.progress {
+    height: 25px;
+    border-radius: 15px;
+    background: rgba(10, 17, 40, 0.8);
+    padding: 4px;
+    overflow: visible; 
+}
+
+/* Bar progres (yang berwarna) */
+.progress-bar {
+    border-radius: 12px;
+    /* Background gradient untuk bar */
+    background: linear-gradient(90deg, var(--space-purple), var(--space-pink), var(--space-cyan));
+    background-size: 300% 300%;
+    transition: width 1s ease; /* Animasi saat bar terisi */
+    animation: gradient-animation 3s ease-in-out infinite; /* Animasi warna gradient */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Deskripsi di bawah progress bar */
+.skill-description {
+    font-size: 0.9rem;
+    color: var(--light-text); /* Warna teks putih keabuan */
+    margin-top: 10px;
+}
+
+/* Animasi untuk gradient di progress bar (Advanced) */
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/*-------------------------HOBI SECTION-----------------------*/
+
+/* SECTION HOBI */
+.hobi-section {
+    padding: 70px 60px;
+    background: linear-gradient(180deg, #000000 0%, #24478d 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+.hobi-section .section-title {
+    display: block;
+    width: 100%;
+    text-align: center;   
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 40px;
+    color: #c47cff;
+    text-shadow: 0 0 10px #8a2be2;
+}
+
+
+.hobi-section .paragraph {
+    display: block;
+    width: 100%;
+    text-align: center;   
+    margin-bottom: 400px;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    color: #ffffff;
+    text-shadow: 0 0 10px #8a2be2;
+}
+
+/* Container */
+.hobi-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+/* Card Hobi */
+.hobi-card {
+    background: rgba(15, 20, 50, 0.8);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow:
+        0 0 10px rgba(181, 82, 255, 0.2),
+        0 0 25px rgba(181, 82, 255, 0.15);
+    transition: 0.3s ease;
+    border: 1px solid rgba(181, 82, 255, 0.3);
+}
+
+.hobi-card:hover {
+    transform: translateY(-7px);
+    box-shadow:
+        0 0 18px rgba(181, 82, 255, 0.4),
+        0 0 35px rgba(181, 82, 255, 0.3);
+}
+
+/* Icon */
+.hobi-card .icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #d28aff;
+    text-shadow: 0 0 14px #8a2be2;
+}
+
+/* Judul */
+.hobi-card h3 {
+    font-size: 1.4rem;
+    color: #d8b6ff;
+    margin-bottom: 10px;
+}
+
+/* Deskripsi */
+.hobi-card p {
+    color: #b5b5b5;
+    line-height: 1.6;
+}
+
+
+/* Modal Background */
+.hobi-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+/* Modal Content */
+.hobi-modal-content {
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 700px;
+    color: white;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.close-modal {
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-images {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.modal-img-item {
+    width: 100%;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.modal-img-item:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {transform: scale(0.9); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+
+.hobi-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.hobi-card {
+    background: #000000;
+    border-radius: 18px;
+    padding: 25px 20px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    border: 1px solid #222;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+/* Hover effect */
+.hobi-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 18px rgba(0,255,255,0.4);
+}
+
+/* Icon */
+.hobi-card .icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+/* Judul */
+.hobi-card h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+/* Deskripsi */
+.hobi-card p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+
+/* ====================== MODAL BERNYANYI ====================== */
+
+#bernyanyiModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* konten modal */
+#bernyanyiModal .hobi-modal-content {
+    background: #111;
+    width: 90%;
+    max-width: 600px;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    color: white;
+}
+
+/* Tombol close */
+#bernyanyiModal .close-bernyanyi {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+#bernyanyiModal .close-bernyanyi:hover {
+    color: #ff4d4d;
+}
+
+/* Judul modal */
+#bernyanyiModal h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+/* Galeri */
+.bernyanyi-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.bernyanyi-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.bernyanyi-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Animasi masuk */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ====================== MODAL MEMBACA ====================== */
+
+#membacaModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* konten modal */
+#membacaModal .hobi-modal-content {
+    background: #111;
+    width: 90%;
+    max-width: 600px;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    color: white;
+}
+
+/* Tombol close */
+#membacaModal .close-membaca {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+#membacaModal .close-membaca:hover {
+    color: #ff4d4d;
+}
+
+/* Membaca */
+.membaca-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.membaca-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.membaca-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Animasi masuk */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+/* ====================== MODAL GITAR ====================== */
+
+#gitarModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* konten modal */
+#gitarModal .hobi-modal-content {
+    background: #111;
+    width: 90%;
+    max-width: 600px;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    color: white;
+}
+
+/* Tombol close */
+#gitarModal .close-gitar {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+#gitarModal .close-gitar:hover {
+    color: #ff4d4d;
+}
+
+/* gitar */
+.gitar-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.gitar-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.gitar-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Animasi masuk */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+/* ====================== MODAL ANJING KUCING ====================== */
+
+#anjingkucingModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* konten modal */
+#anjingkucingModal .hobi-modal-content {
+    background: #111;
+    width: 90%;
+    max-width: 600px;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    color: white;
+}
+
+/* Tombol close */
+#anjingkucingModal .close-gitar {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+#anjingkucingModal .close-anjingkucing:hover {
+    color: #ff4d4d;
+}
+
+/* gitar */
+.anjingkucing-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.anjingkucing-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.anjingkucing-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Animasi masuk */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+/* ====================== MODAL JALAN JALAN ====================== */
+
+#jalanjalanModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* konten modal */
+#jalanjalanModal .hobi-modal-content {
+    background: #111;
+    width: 90%;
+    max-width: 600px;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    color: white;
+}
+
+/* Tombol close */
+#jalanjalanModal .close-jalanjalan {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+#jalanjalanModal .close-jalanjalan:hover {
+    color: #ff4d4d;
+}
+
+/* jalan-jalan */
+.jalanjalan-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.jalanjalan-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.jalanjalan-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Animasi masuk */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+/* ====================== MODAL FOTOGRAFI ====================== */
+
+#fotografiModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* konten modal */
+#fotografiModal .hobi-modal-content {
+    background: #111;
+    width: 90%;
+    max-width: 600px;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    color: white;
+}
+
+/* Tombol close */
+#fotografiModal .close-fotografi {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+#fotografiModal .close-fotografi:hover {
+    color: #ff4d4d;
+}
+
+/* fotografi */
+.fotografi-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.fotografi-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.fotografi-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Animasi masuk */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+/* ====================== NONTON MODAL ====================== */
+
+#nontonModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* konten modal */
+#nontonModal .hobi-modal-content {
+    background: #111;
+    width: 90%;
+    max-width: 600px;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    color: white;
+}
+
+/* Tombol close */
+#nontonModal .close-nonton {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+#nontonModal .close-nonton:hover {
+    color: #ff4d4d;
+}
+
+/* fotografi */
+.nonton-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.nonton-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.nonton-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Animasi masuk */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+/* ---------------------------- PROFIL BISNIS SECTION --------------------------- */
+
+#profilbisnis {
+    padding: 100px 0;
+    background: linear-gradient(180deg, #24478d 0%, #000000 100%);
+}
+
+#profilbisnis .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+#profilbisnis .section-title::after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background: #ffffff;
+    display: block;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+/* CARD */
+#profilbisnis .card {
+    background: #1f2048b5;
+    border-radius: 18px;
+    padding: 35px;
+    box-shadow: 0px 8px 30px rgba(255, 255, 255, 0.12);
+    transition: 0.3s ease;
+}
+
+#profilbisnis .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 12px 40px rgba(255, 0, 0, 0.16);
+}
+
+/* FOTO LOGO */
+#profilbisnis img {
+    border: 4px solid #0d6efd;
+    box-shadow: 0px 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* NAMA BISNIS */
+#profilbisnis h3 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+/* DESKRIPSI */
+#profilbisnis p {
+    font-size: 15px;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* LIST — CHECKLIST */
+#profilbisnis ul {
+    padding-left: 15px;
+    margin-top: 15px;
+}
+
+#profilbisnis ul li {
+    font-size: 15px;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+/* BUTTON */
+#profilbisnis .btn-primary {
+    background: #0d6efd;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+#profilbisnis .btn-primary:hover {
+    background: #ffffff;
+}
+
+
+/* ==================== CONTACT SECTION (Kontak) ==================== */
+#contact {
+    background: linear-gradient(180deg, #000000 0%, #24478d 100%); 
+    color: #e2e8f0;
+}
+#contact .section-title {
+    color: white;
+}
+#contact .section-title::after {
+    background: linear-gradient(90deg, var(--space-blue), var(--space-cyan));
+}
+
+/* Kotak formulir kontak */
+.contact-form {
+    background: rgba(26, 31, 58, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
+}
+
+.input-group-custom {
+    position: relative;
+}
+/* Ikon di dalam input form */
+.input-group-custom i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+/* Input (Nama, Email, Pesan) */
+.input-group-custom .form-control {
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 10px;
+    padding: 15px 15px 15px 45px; /* Padding kiri agar ada ruang untuk ikon */
+    background: rgba(10, 17, 40, 0.9); /* Background input */
+    color: white; /* Warna teks yang diketik user */
+    transition: all 0.3s;
+}
+/* Teks placeholder (Nama Lengkap, Email Anda, ...) */
+.input-group-custom .form-control::placeholder {
+    color: #a8b2d1;
+}
+/* Efek saat input di-klik (focus) */
+.input-group-custom .form-control:focus {
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.5); /* Bayangan ungu */
+    background: rgba(10, 17, 40, 1);
+    border-color: var(--accent-color);
+}
+.input-group-custom .form-control:focus + i {
+    color: var(--space-pink); /* Ikon berubah warna saat input aktif */
+}
+
+/* Tombol Kirim Pesan */
+.btn-send {
+    background: linear-gradient(135deg, var(--space-purple), var(--space-pink));
+    color: white;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 50px; /* Tombol oval */
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(236, 72, 153, 0.3);
+}
+.btn-send:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.5);
+}
+
+/* Info kontak (Email, WA, Lokasi) */
+.contact-info {
+    margin-top: 50px;
+}
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #e2e8f0;
+}
+.contact-info-item i {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: var(--accent-color);
+}
+
+/* ==================== FOOTER (Bagian Bawah) ==================== */
+footer {
+    background: #1a252f; /* Warna background footer */
+    color: white; /* Warna teks footer */
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* ==================== RESPONSIVE (Tampilan di HP) ==================== */
+/* Ini adalah pengaturan agar website terlihat bagus di layar kecil (HP).
+   Biasanya tidak perlu diubah oleh pemula.
+*/
+@media (max-width: 768px) {
+    .home-content h1 {
+        font-size: 2.5rem; /* Ukuran font judul di HP */
+    }
+
+    .section-title {
+        font-size: 2rem; /* Ukuran font judul section di HP */
+    }
+
+    section {
+        padding: 60px 0; /* Jarak atas-bawah section di HP */
+    }
+}
+
+/* Modal Background */
+.hobi-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+
+
+/* Tombol close music modal */
+#musicModal .close-music {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 80px;     /* ukuran besar */
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+#musicModal .close-music:hover {
+    color: #ff4d4d;       /* efek hover merah */
+}
+
+
+.modal-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+
+.close-modal {
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-images {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.modal-img-item {
+    width: 100%;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.modal-img-item:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {transform: scale(0.9); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
